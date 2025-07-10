@@ -1,0 +1,110 @@
+/* CSS Variables for theming */
+:root {
+  /* Dark theme (default) */
+  --bg-primary: #121212;
+  --bg-secondary: #1e1e1e;
+  --bg-tertiary: #2a2a2a;
+  --text-primary: #ffffff;
+  --text-secondary: #b0b0b0;
+  --text-muted: #888888;
+  --accent-color: #ffffff;
+  --accent-secondary: #cccccc;
+  --border-color: #2a2a2a;
+  --hover-bg: rgba(255, 255, 255, 0.1);
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --card-bg: #1e1e1e;
+  --input-bg: #2a2a2a;
+  --message-user-bg: #ffffff;
+  --message-bot-bg: #2a2a2a;
+  --message-user-text: #000000;
+  --message-bot-text: #e0e0e0;
+}
+
+/* Light theme */
+.light-theme {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-tertiary: #e9ecef;
+  --text-primary: #000000;
+  --text-secondary: #6c757d;
+  --text-muted: #adb5bd;
+  --accent-color: #000000;
+  --accent-secondary: #333333;
+  --border-color: #dee2e6;
+  --hover-bg: rgba(0, 0, 0, 0.1);
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --card-bg: #ffffff;
+  --input-bg: #f8f9fa;
+  --message-user-bg: #000000;
+  --message-bot-bg: #f8f9fa;
+  --message-user-text: #ffffff;
+  --message-bot-text: #000000;
+}
+
+/* Dark theme */
+.dark-theme {
+  --bg-primary: #121212;
+  --bg-secondary: #1e1e1e;
+  --bg-tertiary: #2a2a2a;
+  --text-primary: #ffffff;
+  --text-secondary: #b0b0b0;
+  --text-muted: #888888;
+  --accent-color: #ffffff;
+  --accent-secondary: #cccccc;
+  --border-color: #2a2a2a;
+  --hover-bg: rgba(255, 255, 255, 0.1);
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --card-bg: #1e1e1e;
+  --input-bg: #2a2a2a;
+  --message-user-bg: #ffffff;
+  --message-bot-bg: #2a2a2a;
+  --message-user-text: #000000;
+  --message-bot-text: #e0e0e0;
+}
+
+/* App Container */
+.App {
+  min-height: 100vh;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: "JetBrains Mono", "Fira Code", "Consolas", "Monaco",
+    "Courier New", monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: all 0.3s ease;
+}
+
+/* Add padding to account for fixed header, except for chat page */
+.App > *:not(.header):not(.chat-container) {
+  padding-top: 80px;
+}
+
+/* Chat page should take full height below the header */
+.chat-container {
+  min-height: calc(100vh - 80px);
+  height: calc(100vh - 80px);
+  padding-top: 80px !important;
+  margin-top: 0 !important;
+  box-sizing: border-box;
+}
+
+/* Global styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: "JetBrains Mono", "Fira Code", "Consolas", "Monaco",
+    "Courier New", monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: all 0.3s ease;
+}
+
+code {
+  font-family: "JetBrains Mono", "Fira Code", "Consolas", "Monaco",
+    "Courier New", monospace;
+}

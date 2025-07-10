@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { LanguageProvider } from "./context/LanguageContext";
+import { ThemeProvider } from "./context/ThemeContext";
+import Header from "./components/Header";
+import Home from "./pages/Home";
+import Chat from "./pages/Chat";
+import About from "./pages/About";
+import "./styles/App.css";
 
 function App() {
+  const currentPath = window.location.pathname;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider>
+      <LanguageProvider>
+        <div className="App">
+          <Header />
+          {/* Simple routing logic for demonstration */}
+          {currentPath === "/chat" ? (
+            <Chat />
+          ) : currentPath === "/about" ? (
+            <About />
+          ) : (
+            <Home />
+          )}
+        </div>
+      </LanguageProvider>
+    </ThemeProvider>
   );
 }
 
