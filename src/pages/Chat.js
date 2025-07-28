@@ -40,7 +40,7 @@ const Chat = () => {
     }
   };
 
-  const handleSendMessage = () => {
+  const handleSendMessage = async () => {
     if (!inputValue.trim()) return;
 
     const userMessage = {
@@ -59,17 +59,31 @@ const Chat = () => {
       textareaRef.current.style.height = "auto";
     }
 
-    // Simulate bot response
-    setTimeout(() => {
+    try {
+      const response = await fetch("http://localhost:5050/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: userMessage.text }),
+      });
+      const data = await response.json();
       const botResponse = {
         id: Date.now() + 1,
-        text: "I understand your message. This is a demo response. In a real application, this would be connected to an AI service.",
+        text: data.response,
         sender: "bot",
         timestamp: new Date(),
       };
       setMessages((prev) => [...prev, botResponse]);
+    } catch (error) {
+      const errorResponse = {
+        id: Date.now() + 1,
+        text: "Sorry, there was an error connecting to the AI backend.",
+        sender: "bot",
+        timestamp: new Date(),
+      };
+      setMessages((prev) => [...prev, errorResponse]);
+    } finally {
       setIsTyping(false);
-    }, 1000 + Math.random() * 2000);
+    }
   };
 
   const formatTime = (timestamp) => {
